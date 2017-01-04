@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/02 12:29:33 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/04 14:51:47 by nlowe            ###   ########.fr       */
+/*   Created: 2017/01/04 14:39:28 by nlowe             #+#    #+#             */
+/*   Updated: 2017/01/04 15:40:39 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "fillit.h"
 
-#include "libft.h"
-#include <stdlib.h>
-#include <string.h>
-
-typedef struct		s_piece
+t_piece		*new_piece(char *str, int number)
 {
-	char			tab[4][4];
-	char			order;
-	struct s_piece	*next;
-}					t_piece;
+	t_piece	*ret;
+	int		i;
+	int		j;
 
-typedef struct		s_board
-{
-	char			**tab;
-	int				size;
-}					t_board;
+	if (!(ret = (t_piece *)malloc(sizeof(*ret))))
+		return (NULL);
+	ret->next = NULL;
+	ret->order = 'A' + number;
 
-t_piece		*new_piece(char *str, int number);
-
-#endif
+	i = 0;
+	while (i++ < 4)
+	{
+		j = 0;
+		while (*str && j++ < 4 && *str != '\n')
+		{
+			ret->tab[i][j] = *str;
+			str++;
+		}
+		if (*str && *str == '\n')
+			str++;
+	}
+	return (ret);
+}
