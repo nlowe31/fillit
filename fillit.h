@@ -6,20 +6,26 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 12:29:33 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/04 14:51:47 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/10 18:12:49 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include "libft.h"
-#include <stdlib.h>
-#include <string.h>
+# define BUFF_SIZE 4096
+# include "libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct		s_piece
 {
-	char			tab[4][4];
+	int				x[4];
+	int				y[4];
 	char			order;
 	struct s_piece	*next;
 }					t_piece;
@@ -31,5 +37,8 @@ typedef struct		s_board
 }					t_board;
 
 t_piece		*new_piece(char *str, int number);
+char		*read_file(char *filename);
+void		ft_exit(char *msg);
+int			num_of_pieces(char *str);
 
 #endif
