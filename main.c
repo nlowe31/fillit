@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/10 17:37:16 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/16 13:48:38 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ void	ft_exit(char *msg)
 
 int		main(int ac, char **av)
 {
-//	t_piece	*test
+	t_piece **list;
+	char	*contents;
 
+	list = NULL;
+	contents = read_file(av[1]);
 	if (ac != 2)
 		ft_exit("usage: fillit filename");
-	printf("%i\n", num_of_pieces(read_file(av[1])));
+	list = create_list(contents, num_of_pieces(contents));
+	print_list(list);
 //	test = new_piece(av[1], 0);
 //	printf("%c", test->order);
 	return (0);
