@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/19 14:25:52 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/19 15:48:02 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,24 @@ void	ft_exit(char *msg)
 int		main(int ac, char **av)
 {
 	t_piece *list;
+	t_board	*board;
+	int		tetriminos;
 	char	*contents;
 
 	if (ac != 2)
 		ft_exit("usage: fillit filename");
 	contents = read_file(av[1]);
-	list = create_list(contents, num_of_pieces(contents));
+	tetriminos = num_of_pieces(contents);
+	list = create_list(contents, tetriminos);
 	print_list(&list);
 	for_each(list, crop_piece);
 	print_list(&list);
+	board = new_board(5);
+	while (list)
+	{
+		place_piece(board, list);
+		list = list->next;
+	}
+	print_board(board);
 	return (0);
 }
