@@ -6,13 +6,11 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/19 12:25:11 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/19 13:40:23 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void	ft_exit(char *msg)
 {
@@ -32,6 +30,8 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		ft_exit("usage: fillit filename");
 	list = create_list(contents, num_of_pieces(contents));
+	print_list(&list);
+	for_each(list, crop_piece);
 	print_list(&list);
 	return (0);
 }
