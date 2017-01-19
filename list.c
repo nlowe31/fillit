@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:39:28 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/16 16:53:36 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/19 12:21:13 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void		print_piece(t_piece piece)
 	ft_putstr("Order: ");
 	ft_putchar(piece.order);
 	ft_putstr("\nCoordinates:\n");
-	while (i++ < 4)
+	while (i < 4)
 	{
 		ft_putstr("(");
 		ft_putnbr(piece.x[i]);
 		ft_putstr(", ");
 		ft_putnbr(piece.y[i]);
 		ft_putstr(")\n");
+		i++;
 	}
 }
 
@@ -51,11 +52,9 @@ void		add_piece(t_piece **start, char *str, int number)
 {
 	t_piece	*temp;
 
-	ft_putstr("Add Piece\n");
 	temp = (*start);
 	if (temp)
 	{
-		ft_putstr("Add Piece, Part 2\n");
 		while (temp->next)
 			temp = temp->next;
 		temp->next = new_piece(str, number);
@@ -70,27 +69,18 @@ t_piece		*new_piece(char *str, int number)
 	int		coord;
 	int		pos;
 
-	ft_putstr("New Piece\n");
 	coord = 0;
 	pos = 0;
 	if (!(ret = (t_piece *)malloc(sizeof(t_piece))))
 		return (NULL);
 	ret->next = NULL;
 	ret->order = 'A' + number;
-	ft_putchar(ret->order);
-	ft_putchar('\n');
 	while (pos < 20)
 	{
 		if (str[pos] == '#')
 		{
 			ret->x[coord] = (pos % 5);
 			ret->y[coord] = (pos / 5);
-			ft_putnbr(coord);
-			ft_putchar(':');
-			ft_putnbr(ret->x[coord]);
-			ft_putchar(',');
-			ft_putnbr(ret->y[coord]);
-			ft_putchar('\n');
 			coord++;
 		}
 		pos++;
@@ -104,9 +94,6 @@ t_piece		*create_list(char *str, int total)
 	int		i;
 
 	ret = NULL;
-	ft_putstr("Create List\n");
-	ft_putnbr(total);
-	ft_putstr("\n");
 	i = 0;
 	while (*str && i < total)
 	{
