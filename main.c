@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/19 13:40:23 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/19 14:25:52 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		main(int ac, char **av)
 	t_piece *list;
 	char	*contents;
 
-	contents = read_file(av[1]);
 	if (ac != 2)
 		ft_exit("usage: fillit filename");
+	contents = read_file(av[1]);
 	list = create_list(contents, num_of_pieces(contents));
 	print_list(&list);
 	for_each(list, crop_piece);
