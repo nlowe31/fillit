@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 12:29:33 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 14:51:41 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/20 15:12:42 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		crop_piece(t_piece *piece);
 void		for_each(t_piece *list, void (*f)(t_piece *));
 t_board		*new_board(int size);
 void		print_board(t_board *board);
-void		place_piece(t_board *board, t_piece *piece);
+void		place_piece(t_board *board, t_piece *piece, int x, int y);
 
 
 #endif

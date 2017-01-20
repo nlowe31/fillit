@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 12:26:05 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 14:12:45 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/20 15:12:28 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_board(t_board *board)
 	}
 }
 
-void	place_piece(t_board *board, t_piece *piece)
+void	test_place_piece(t_board *board, t_piece *piece)
 {
 	int		x;
 	int		y;
