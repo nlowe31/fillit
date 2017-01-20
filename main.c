@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/19 16:01:25 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/20 15:04:33 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main(int ac, char **av)
 	print_list(&list);
 	for_each(list, crop_piece);
 	print_list(&list);
-	board = new_board(5);
+	board = new_board(4);
 	while (list)
 	{
 		place_piece(board, list);
