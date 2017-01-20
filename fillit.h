@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 12:29:33 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 15:12:42 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/20 19:03:48 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,20 @@ typedef struct		s_board
 	int				size;
 }					t_board;
 
-t_piece		*new_piece(char *str, int number);
-char		*read_file(char *filename);
-void		ft_exit(char *msg);
-int			num_of_pieces(char *str);
-t_piece		*new_piece(char *str, int number);
-void		add_piece(t_piece **start, char *str, int number);
-t_piece		*create_list(char *str, int total);
-void 		print_list(t_piece **list);
-void		crop_piece(t_piece *piece);
-void		for_each(t_piece *list, void (*f)(t_piece *));
-t_board		*new_board(int size);
-void		print_board(t_board *board);
-void		place_piece(t_board *board, t_piece *piece, int x, int y);
+t_piece				*new_piece(char *str, int number);
+char				*read_file(char *filename);
+void				ft_exit(char *msg);
+int					num_of_pieces(char *str);
+t_piece				*new_piece(char *str, int number);
+void				add_piece(t_piece **start, char *str, int number);
+t_piece				*create_list(char *str, int total);
+void 				print_list(t_piece **list);
+void				crop_piece(t_piece *piece);
+void				for_each(t_piece *list, void (*f)(t_piece *));
+t_board				*new_board(int size);
+void				print_board(t_board *board);
+void				place_piece(t_board *board, t_piece *piece, int x, int y);
+void				launch(t_piece *list, int size, int x, int y);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 15:13:24 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/20 19:03:23 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_exit(char *msg)
 int		main(int ac, char **av)
 {
 	t_piece *list;
-	t_board	*board;
+	//t_board	*board;
 	int		tetriminos;
 	char	*contents;
 
@@ -33,11 +33,11 @@ int		main(int ac, char **av)
 	contents = read_file(av[1]);
 	tetriminos = num_of_pieces(contents);
 	list = create_list(contents, tetriminos);
-	print_list(&list);
+	//print_list(&list);
 	for_each(list, crop_piece);
-	print_list(&list);
-	board = new_board(4);
-	
-	print_board(board);
+	//print_list(&list);
+	//board = new_board(4);
+	launch(list, tetriminos, 0, 0);
+	//print_board(board);
 	return (0);
 }
