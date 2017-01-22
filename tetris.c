@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 15:09:29 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/22 17:55:53 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/22 18:19:08 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		piece_fits(t_board *board, t_piece *piece, int x, int y)
 	ft_putnbr(y);
 	ft_putchar('\n');
 
-	if ((x + piece->y[3]) >= (board->size) || (y + piece->x[3]) >= (board->size))
+	if ((y + piece->y[3]) >= (board->size) || (x + piece->x[3]) >= (board->size))
 					return (0);
 	if (board->tab[y + piece->y[0]][x + piece->x[0]] == '.'
 		&& board->tab[y + piece->y[1]][x + piece->x[1]] == '.'
@@ -88,6 +88,10 @@ int		solve(t_board *board, t_piece *piece, int x, int y)
 	ft_putnbr(y);
 	ft_putchar('\n');
 
+	print_board(board);
+	ft_putchar('\n');
+	ft_putchar('\n');
+
 	if (!(piece))
 		return (1);
 	if (x >= (board->size))
@@ -124,10 +128,10 @@ void	launch(t_piece *list, int size, int x, int y)
 	}
 	else if (x >= (size))
 	{
-		ft_putstr("launch: x > size-1");
+		ft_putstr("launch: x >= size");
 		if (y >= (size))
 		{
-			ft_putstr("launch: y > size-1");
+			ft_putstr("launch: y >= size");
 			launch(list, (size + 1), 0, 0);
 		}
 		else
