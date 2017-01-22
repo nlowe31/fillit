@@ -6,7 +6,7 @@
 #    By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/17 21:11:30 by nlowe             #+#    #+#              #
-#    Updated: 2017/01/20 17:48:19 by nlowe            ###   ########.fr        #
+#    Updated: 2017/01/22 17:39:44 by nlowe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ $(NAME):
 clean:
 	rm -f $(O_FILES)
 
-then_clean: re clean
+thenclean: re clean
 
 fclean: clean
 	rm -f $(NAME)

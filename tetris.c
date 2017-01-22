@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 15:09:29 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 19:08:46 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/22 17:55:53 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int		piece_fits(t_board *board, t_piece *piece, int x, int y)
 {
 
-	ft_putstr("Piece fits? coord = ");
+	ft_putstr("Piece fits? ");
+	ft_putchar(piece->order);
+	ft_putstr(", coord = ");
 	ft_putnbr(x);
 	ft_putchar(',');
 	ft_putnbr(y);
 	ft_putchar('\n');
 
-	if ((x + piece->y[3]) >= board->size || (y + piece->x[3]) >= board->size)
+	if ((x + piece->y[3]) >= (board->size) || (y + piece->x[3]) >= (board->size))
 					return (0);
 	if (board->tab[y + piece->y[0]][x + piece->x[0]] == '.'
 		&& board->tab[y + piece->y[1]][x + piece->x[1]] == '.'
@@ -33,7 +35,9 @@ int		piece_fits(t_board *board, t_piece *piece, int x, int y)
 
 void	place_piece(t_board *board, t_piece *piece, int x, int y)
 {
-	ft_putstr("Place piece\n");
+	ft_putstr("Place piece ");
+	ft_putchar(piece->order);
+	ft_putchar('\n');
 
 	board->tab[y + piece->y[0]][x + piece->x[0]] = piece->order;
 	board->tab[y + piece->y[1]][x + piece->x[1]] = piece->order;
@@ -76,11 +80,19 @@ int		solve(t_board *board, t_piece *piece)
 */
 int		solve(t_board *board, t_piece *piece, int x, int y)
 {
+	ft_putstr("Solve, board size = ");
+	ft_putnbr(board->size);
+	ft_putstr(", coord = ");
+	ft_putnbr(x);
+	ft_putchar(',');
+	ft_putnbr(y);
+	ft_putchar('\n');
+
 	if (!(piece))
 		return (1);
-	if (x >= (board->size - 1))
+	if (x >= (board->size))
 	{
-		if (y >= (board->size - 1))
+		if (y >= (board->size))
 			return (0);
 		return(solve(board, piece, 0, (y + 1)));
 	}
@@ -89,25 +101,40 @@ int		solve(t_board *board, t_piece *piece, int x, int y)
 		place_piece(board, piece, x, y);
 		return(solve(board, piece->next, 0, 0));
 	}
-	return (solve(board, piece, (x + 1), (y + 1)));
+	return (solve(board, piece, (x + 1), y));
 }
 
 void	launch(t_piece *list, int size, int x, int y)
 {
 	t_board *board;
 
+	ft_putstr("Launch, board size = ");
+	ft_putnbr(size);
+	ft_putstr(", coord = ");
+	ft_putnbr(x);
+	ft_putchar(',');
+	ft_putnbr(y);
+	ft_putchar('\n');
+
 	board = new_board(size);
 	if (solve(board, list, x, y))
 	{
 		print_board(board);
-		return ;
+		exit(0);
 	}
-	else if (x < (size - 1))
-		launch(list, size, (x + 1), y);
-	else if (y < (size - 1))
-		launch(list, size, (x + 1), y);
+	else if (x >= (size))
+	{
+		ft_putstr("launch: x > size-1");
+		if (y >= (size))
+		{
+			ft_putstr("launch: y > size-1");
+			launch(list, (size + 1), 0, 0);
+		}
+		else
+			launch(list, size, 0, (y + 1));
+	}
 	else
-		launch(list, (size + 1), 0, 0);
+		launch(list, size, (x + 1), y);
 }
 /*
 void	launch(t_piece *list, int tetriminos)
