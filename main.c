@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/23 15:53:46 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/23 16:00:15 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_exit(char *msg)
 {
 	if (msg && *msg)
-		ft_puterr(msg);
+		ft_puterr("error");
 	else
-		ft_puterr("An error occurred.");
+		ft_puterr("error");
 	exit(0);
 }
 
