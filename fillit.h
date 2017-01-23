@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 12:29:33 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 19:03:48 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/23 15:53:03 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void 				print_list(t_piece **list);
 void				crop_piece(t_piece *piece);
 void				for_each(t_piece *list, void (*f)(t_piece *));
 t_board				*new_board(int size);
+t_board				*copy_board(t_board *old);
 void				print_board(t_board *board);
-void				place_piece(t_board *board, t_piece *piece, int x, int y);
-void				launch(t_piece *list, int size, int x, int y);
-
+t_board				*place_piece(t_board *temp, t_piece *piece, int x, int y);
+void				launch(t_piece *list, int tetriminos);
 
 #endif

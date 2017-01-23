@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 12:26:05 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 18:10:53 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/23 15:53:19 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,27 @@ t_board		*new_board(int size)
 			ft_exit(0);
 		ft_memset(board->tab[i], '.', size);
 		board->tab[i][size] = '\0';
+		i++;
+	}
+	board->tab[i] = 0;
+	return (board);
+}
+
+t_board		*copy_board(t_board *old)
+{
+	t_board		*board;
+	int			i;
+
+	i = 0;
+	if (!(board = (t_board *)malloc(sizeof(t_board))))
+		ft_exit(0);
+	board->size = old->size;
+	if (!(board->tab = (char **)malloc(sizeof(char*) * (board->size + 1))))
+		ft_exit(0);
+	while (i < board->size)
+	{
+		if (!(board->tab[i] = ft_strdup(old->tab[i])))
+			ft_exit(0);
 		i++;
 	}
 	board->tab[i] = 0;
@@ -75,7 +96,3 @@ void		test_place_piece(t_board *board, t_piece *piece)
 		y++;
 	}
 }
-
-/*
-sqrt(tetrminos * 4);
-*/

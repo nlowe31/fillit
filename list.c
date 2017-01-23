@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:39:28 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 15:09:14 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/23 15:54:06 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		print_piece(t_piece piece)
 	}
 }
 
-void 		print_list(t_piece **list)
+void		print_list(t_piece **list)
 {
 	t_piece		*temp;
 
