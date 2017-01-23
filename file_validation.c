@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 23:02:21 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/20 18:11:04 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/23 16:23:48 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		test_eol(char **str, int *count, int *lines, int *chars)
 	*chars = 0;
 	if (!(*(*str + 1)) || *(*str + 1) == '\n')
 	{
+		if (*(*str + 1) == '\n' && !(*(*str + 2)))
+			ft_exit(0);
 		if (*count == -8 && *lines == 3)
 		{
 			*lines = 0;
