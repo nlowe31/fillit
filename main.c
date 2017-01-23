@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 17:15:30 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/23 16:17:51 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/23 17:04:15 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main(int ac, char **av)
 	contents = read_file(av[1]);
 	tetriminos = num_of_pieces(contents);
 	list = create_list(contents, tetriminos);
+	//for_each(list, check_if_separate);
 	for_each(list, crop_piece);
 	launch(list, tetriminos);
 	return (0);
