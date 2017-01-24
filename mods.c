@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 12:37:15 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/24 17:39:53 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/24 21:19:35 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ void    check_if_separate(t_piece *piece)
 {
     int     i;
 	int		j;
-	int		count;
+	int		edges;
 	int		singles;
 	int		multiples;
 
+	ft_putstr("\npiece: ");
 	ft_putchar(piece->order);
 	ft_putchar('\n');
     i = 0;
@@ -63,7 +64,7 @@ void    check_if_separate(t_piece *piece)
 	while (i < 4)
 	{
 		j = 0;
-		count = 0;
+		edges = 0;
 		while (j < 4)
 		{
 			ft_putnbr(piece->x[i]);
@@ -76,32 +77,34 @@ void    check_if_separate(t_piece *piece)
 			ft_putchar('\n');
 			ft_putchar('\n');
 
-			if (piece->x[i] == piece->x[j] && (piece->y[i] - piece->y[j] == 1 || piece->y[i] - piece->y[j] == -1))
+			if (piece->x[i] == piece->x[j] && ((piece->y[i] - piece->y[j]) == 1 || (piece->y[i] - piece->y[j]) == -1))
 			{
 				ft_putendl("x == x");
-				count++;
+				edges++;
 			}
-			if (piece->y[i] == piece->y[j] && (piece->x[i] - piece->x[j] == 1 || piece->y[i] - piece->y[j] == -1))
+			if (piece->y[i] == piece->y[j] && ((piece->x[i] - piece->x[j]) == 1 || (piece->x[i] - piece->x[j]) == -1))
 			{
 				ft_putendl("y == y");
-				count++;
+				edges++;
 			}
 			j++;
 		}
-		ft_putnbr(count);
+		ft_putstr("edges: ");
+		ft_putnbr(edges);
 		ft_putchar('\n');
-		if (count >= 2)
+		if (edges >= 2)
 			multiples++;
-		else if (count > 0)
+		else if (edges > 0)
 			singles++;
     	i++;
 	}
+	ft_putstr("multiples: ");
 	ft_putnbr(multiples);
-	ft_putchar(',');
+	ft_putstr(", singles: ");
 	ft_putnbr(singles);
 	ft_putchar('\n');
-	/*if (!(multiples >= 2 && (singles + multiples) == 4))
-		ft_exit(0);*/
+	if (!(multiples >= 2 && (singles + multiples) == 4))
+		ft_exit(0);
 }
 
 void	for_each(t_piece *list, void (*f)(t_piece *))
