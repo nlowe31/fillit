@@ -6,7 +6,7 @@
 #    By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/17 21:11:30 by nlowe             #+#    #+#              #
-#    Updated: 2017/01/25 15:52:02 by nlowe            ###   ########.fr        #
+#    Updated: 2017/01/25 16:08:11 by nlowe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(NAME): $(LIBFT) $(OBJ)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $^
+	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $^
 
 $(LIBFT):
 	@make -C./libft/
