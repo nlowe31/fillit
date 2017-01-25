@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:39:28 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/23 15:54:06 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/25 17:10:59 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		print_list(t_piece **list)
 
 	ft_putstr("Print List\n");
 	if (!(list))
-		ft_exit("Empty list.");
+		ft_exit(0);
 	temp = *list;
 	while (temp)
 	{

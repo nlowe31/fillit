@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 23:02:21 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/24 17:52:10 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/25 17:15:37 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*read_file(char *filename)
 	char	*contents;
 
 	contents = ft_strnew(BUFF_SIZE);
-	fd = open(filename, O_RDONLY);
+	fd = open(filename, O_RDWR);
 	if (fd <= 0)
-		ft_exit("An error occurred while opening the file.");
+		ft_exit(0);
 	while ((ret = read(fd, contents, BUFF_SIZE)))
 		contents[ret] = '\0';
 	return (contents);
@@ -50,14 +50,14 @@ int		test_character(char *str, int *chars)
 	else if (*str == '.')
 		return (-1);
 	else
-		ft_exit("The file provided is not valid.");
+		ft_exit(0);
 	return (0);
 }
 
 int		test_eol(char **str, int *count, int *lines, int *chars)
 {
 	if (*lines > 3 || *chars != 4)
-		ft_exit("The file provided is not valid.");
+		ft_exit(0);
 	*chars = 0;
 	if (!(*(*str + 1)) || *(*str + 1) == '\n')
 	{
@@ -71,7 +71,7 @@ int		test_eol(char **str, int *count, int *lines, int *chars)
 			return (1);
 		}
 		else
-			ft_exit("The file provided is not valid.");
+			ft_exit(0);
 	}
 	else
 		(*lines)++;
@@ -98,6 +98,6 @@ int		num_of_pieces(char *str)
 		str++;
 	}
 	if (pieces == 0 || pieces > 26)
-		ft_exit("The file provided is not valid.");
+		ft_exit(0);
 	return (pieces);
 }
