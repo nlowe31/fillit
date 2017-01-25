@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 12:37:15 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/24 21:27:20 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/25 15:40:59 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	crop_piece(t_piece *piece)
 	}
 }
 
-void    check_if_separate(t_piece *piece)
+void	check_if_separate(t_piece *piece)
 {
-    int     i;
-	int		j;
-	int		edges;
+	int	i;
+	int	j;
+	int	edges;
 
 	edges = 0;
 	i = 0;
@@ -59,7 +59,7 @@ void    check_if_separate(t_piece *piece)
 				edges++;
 			j++;
 		}
-    	i++;
+		i++;
 	}
 	if (edges < 6)
 		ft_exit(0);

@@ -6,11 +6,12 @@
 #    By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/17 21:11:30 by nlowe             #+#    #+#              #
-#    Updated: 2017/01/25 14:56:44 by nlowe            ###   ########.fr        #
+#    Updated: 2017/01/25 15:52:02 by nlowe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
+LIBFT = libft.a
 
 SRC_PATH = src
 SRC_NAME = main.c \
@@ -32,22 +33,24 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) $(OBJ) -o $@
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(OBJ_PATH)
 	$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $^
 
 $(LIBFT):
-	@make -C ./libft/
+	@make -C./libft/
 
 clean:
 	rm -f $(OBJ)
-	@rmdir $(OBJ_PATH)
+	rm -d -f $(OBJ_PATH)
+	@make clean -C./libft/
 
 fclean: clean
 	rm -f $(NAME)
+	@make fclean -C./libft/
 
 re: fclean all
 
