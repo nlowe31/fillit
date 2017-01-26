@@ -6,7 +6,7 @@
 /*   By: nlowe <nlowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 23:02:21 by nlowe             #+#    #+#             */
-/*   Updated: 2017/01/25 17:15:37 by nlowe            ###   ########.fr       */
+/*   Updated: 2017/01/26 16:14:09 by nlowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ char	*read_file(char *filename)
 	fd = open(filename, O_RDWR);
 	if (fd <= 0)
 		ft_exit(0);
-	while ((ret = read(fd, contents, BUFF_SIZE)))
-		contents[ret] = '\0';
+	if (!(ret = read(fd, contents, BUFF_SIZE)))
+		ft_exit(0);
+	contents[ret] = '\0';
+	close(fd);
 	return (contents);
 }
 
